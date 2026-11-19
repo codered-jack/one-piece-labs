@@ -1,0 +1,34 @@
+{
+  "title": "Spike: Kubernetes lab environment",
+  "description": "Diagnostics for One Piece Labs: storage, metrics-server, build tools, and Gateway API controllers.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Envoy Gateway",
+        "text": "step1/text.md",
+        "foreground": "step1/foreground.sh"
+      },
+      {
+        "title": "NGINX Gateway Fabric",
+        "text": "step2/text.md",
+        "foreground": "step2/foreground.sh"
+      },
+      {
+        "title": "Traefik",
+        "text": "step3/text.md",
+        "foreground": "step3/foreground.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

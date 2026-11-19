@@ -1,0 +1,29 @@
+{
+  "title": "Spike: Ubuntu lab environment",
+  "description": "Diagnostics for One Piece Labs: tools, image pull times, and a Compose stack.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Start a web server",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Stop the web server",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
