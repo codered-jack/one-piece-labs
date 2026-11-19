@@ -1,4 +1,4 @@
-This is the lab for *Images: the recipe card*. This machine has Docker installed. You'll:
+This is the lab for the ***Images: the recipe card*** lesson. This machine has Docker installed. You'll:
 
 - pull an image by its **tag**
 - count the **layers** an image is made of

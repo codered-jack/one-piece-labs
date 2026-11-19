@@ -1,4 +1,4 @@
-This is the lab for *Build your own image*. This machine has Docker installed, and the folder `~/wanted` holds the wanted-poster app from the lesson. You'll build four versions of its image:
+This is the lab for the ***Build your own image*** lesson. This machine has Docker installed, and the folder `~/wanted` holds the wanted-poster app from the lesson. You'll build four versions of its image:
 
 - `v1`: a first **Dockerfile** that prints Luffy's poster
 - `v2`: an **ENTRYPOINT**, so you can pass any name

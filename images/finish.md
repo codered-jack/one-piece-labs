@@ -8,4 +8,4 @@ You just:
 - found that file in the container's **writable layer** with `docker diff`
 - removed a container, then the image
 
-Next up is *Build your own image*, where you'll write the recipe card yourself.
+Next up is the ***Build your own image*** lesson, where you'll write the recipe card yourself.

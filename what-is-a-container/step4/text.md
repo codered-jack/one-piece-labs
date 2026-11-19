@@ -1,4 +1,4 @@
-Start a container named `napper` that runs `sleep 3600`, **in the background**, so you get your prompt back.
+Start a container named `napper` that runs `sleep 3600`, **in the background**, so you can keep typing commands.
 
 Then list the running containers:
 

@@ -1,4 +1,4 @@
-Serve the current folder on port `8080`, **in the background**, so you get your prompt back.
+Serve the current folder on port `8080`, **in the background**, so you can keep typing commands.
 
 Then be the client and ask it for a page:
 

@@ -1,4 +1,4 @@
-This is the lab for *What a container really is*. This machine runs Ubuntu and already has Docker installed. You'll:
+This is the lab for the ***What a container really is*** lesson. This machine runs Ubuntu and already has Docker installed. You'll:
 
 - run a container from the `alpine` **image**
 - check which Linux a container has, and whose **kernel** it uses
