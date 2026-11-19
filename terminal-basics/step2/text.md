@@ -1,5 +1,3 @@
-# Find its process ID
-
 Find the **PID** of the process listening on port `8080`, then save just that number to `~/server.pid`.
 
 Check what you saved:

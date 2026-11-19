@@ -1,5 +1,3 @@
-# From localhost to everyone
-
 Start a second server, on port `9090`, bound to `127.0.0.1` (localhost) only.
 
 It answers when you ask from this machine through localhost:

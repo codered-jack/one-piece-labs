@@ -1,5 +1,3 @@
-# Configure an app with an environment variable
-
 Your home folder has a small app, `app.py`. Have a look:
 
 `cat ~/app.py`{{exec}}

@@ -1,5 +1,3 @@
-# Clean up
-
 Stop every server you started, so nothing is listening on `8080`, `9090` or `7070`.
 
 `jobs` lists the servers this terminal started:

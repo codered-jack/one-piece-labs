@@ -1,5 +1,3 @@
-# Start a web server
-
 Serve the current folder on port `8080`, **in the background**, so you get your prompt back.
 
 Then be the client and ask it for a page:
