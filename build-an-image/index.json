@@ -1,0 +1,43 @@
+{
+  "title": "Build your own image",
+  "description": "Write a Dockerfile, use CMD and ENTRYPOINT, bake in a default with ENV, and keep secrets out.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Build wanted:v1",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Take a name",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Raise the bounty",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Leave the secrets behind",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        { "file": "wanted.py", "target": "~/wanted" }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

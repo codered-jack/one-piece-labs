@@ -1,4 +1,4 @@
-This is the lab for lesson 0. You'll practise the four ideas from the lesson on a real Linux machine:
+This is the lab for *Your terminal in 20 minutes*. You'll practise the four ideas from the lesson on a real Linux machine:
 
 - start a **process** in the background and find its PID
 - see which **ports** are being listened on

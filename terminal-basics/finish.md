@@ -7,4 +7,4 @@ You just:
 - saw a **localhost** server refuse outside connections, and opened it up with `0.0.0.0`
 - changed an app's port with an **environment variable**, without touching its code
 
-Every one of these comes back in the course. Next up is lesson 1, *What a container really is*, where you'll put a process in a box.
+Every one of these comes back in the course. Next up is *What a container really is*, where you'll put a process in a box.

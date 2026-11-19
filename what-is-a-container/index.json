@@ -1,0 +1,47 @@
+{
+  "title": "What a container really is",
+  "description": "Run containers, look inside one, and find it again from the machine.",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Run your first container",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Which Linux is inside?",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Whose kernel?",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Start a napper",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Find it from outside",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Clean up",
+        "text": "step6/text.md",
+        "verify": "step6/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
