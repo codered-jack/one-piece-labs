@@ -10,7 +10,7 @@ Press **Check** when neither is listed.
 
 <details><summary>Tip</summary>
 
-`docker rm` removes a container, and `docker image rm` removes an image. Docker won't remove an image while any container uses it, even a stopped one; the error names the container to remove first.
+`docker rm` removes a container, and `docker image rm` removes an image. Docker won't remove an image while a container uses it, even a stopped one. The error names that container, so remove it first.
 
 </details>
 
