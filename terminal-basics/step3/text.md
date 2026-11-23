@@ -1,51 +1,37 @@
-Start a second server, on port `9090`, bound to `127.0.0.1` (localhost) only.
+Find the **PID** of the server on port `8080`. Save just that number to `~/server.pid`.
 
-It answers when you ask from this machine through localhost:
+Check what you saved:
 
-`curl localhost:9090`{{exec}}
+`cat ~/server.pid`{{exec}}
 
-Now ask through the machine's own address instead. `hostname -I` prints it, and this command uses the first one:
-
-`curl $(hostname -I | awk '{print $1}'):9090`{{exec}}
-
-That one fails with `Connection refused`: the server only listens on localhost, so nothing else can reach it.
-
-Fix it: stop the localhost server, and start it again on `0.0.0.0`. Run the second `curl` again; this time it answers.
-
-Press **Check** when it does.
+It should print one number, and nothing else. Press **Check** when it does.
 
 <br>
 
 <details><summary>Tip</summary>
 
-`--bind <address>` chooses the address `http.server` listens on. `jobs` lists your background servers with their job numbers, and `kill %<number>` stops one.
+`ss -ltnp` lists every listening port. Send it through `grep`, to keep only the line for port 8080. Then look for `pid=` in that line:
+
+```plain
+ss -ltnp | grep :8080
+```{{exec}}
+
+`echo <number> > ~/server.pid` writes a number into the file.
 
 </details>
 
 <details><summary>Solution</summary>
 
-Start the localhost-only server:
+Find the PID:
 
 ```plain
-python3 -m http.server 9090 --bind 127.0.0.1 &
+ss -ltnp | grep :8080
 ```{{exec}}
 
-Find its job number:
+The end of the line looks like `users:(("python3",pid=4242,fd=3))`. Save your own number, not 4242:
 
 ```plain
-jobs
-```{{exec}}
-
-Stop it with that number. If `jobs` lists it as job 2:
-
-```plain
-kill %2
+echo 4242 > ~/server.pid
 ```{{copy}}
-
-Start it again on every address:
-
-```plain
-python3 -m http.server 9090 --bind 0.0.0.0 &
-```{{exec}}
 
 </details>

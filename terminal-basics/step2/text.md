@@ -1,37 +1,27 @@
-Find the **PID** of the process listening on port `8080`, then save just that number to `~/server.pid`.
+Share the current folder on port `8080`, **in the background**, so you can keep typing commands.
 
-Check what you saved:
+Then ask it for a page:
 
-`cat ~/server.pid`{{exec}}
+`curl localhost:8080`{{exec}}
 
-It should print one number and nothing else. Press **Check** when it does.
+You should see a list of the folder's files, written in HTML. If you're still in `ship`, the list includes `name.txt`.
+
+The server prints a log line for each request. If the prompt looks broken, press Enter.
+
+Press **Check** when the server answers.
 
 <br>
 
 <details><summary>Tip</summary>
 
-`ss -ltnp` lists every listening port. Send it through `grep` to keep only the line for port 8080, and look for `pid=` in that line:
-
-```plain
-ss -ltnp | grep :8080
-```{{exec}}
-
-`echo <number> > ~/server.pid` writes a number into the file.
+`&` at the end of a command runs it in the background. Python has a small web server built in: `python3 -m http.server <port>`.
 
 </details>
 
 <details><summary>Solution</summary>
 
-Find the PID:
-
 ```plain
-ss -ltnp | grep :8080
+python3 -m http.server 8080 &
 ```{{exec}}
-
-The end of the line looks like `users:(("python3",pid=4242,fd=3))`. Save your number, not 4242:
-
-```plain
-echo 4242 > ~/server.pid
-```{{copy}}
 
 </details>

@@ -1,29 +1,28 @@
-Stop every server you started, so nothing is listening on `8080`, `9090` or `7070`.
+Your home folder has a small app, `app.py`. Have a look:
 
-`jobs` lists the servers this terminal started:
+`cat ~/app.py`{{exec}}
 
-`jobs`{{exec}}
+It reads its port from the `PORT` environment variable. When `PORT` isn't set, it uses `8000`.
 
-Stop each one with `kill %<number>`, then confirm the ports are free:
+Start `app.py` in the background, so it listens on port `7070`. Don't edit the file. Then ask it for a page:
 
-`ss -ltnp`{{exec}}
+`curl localhost:7070`{{exec}}
 
-Press **Check** when none of the three ports is listed.
+It should answer `Ahoy from port 7070!`. Press **Check** when it does.
 
 <br>
 
 <details><summary>Tip</summary>
 
-A stopped job's number gets reused by the next job you start, so read the numbers from `jobs` rather than guessing. A server started in another terminal tab won't be in this tab's `jobs`; stop it by PID instead, with `kill <PID>`.
+`NAME=value command` sets an environment variable for that one command. Put it on the same line, in front of `python3`.
 
 </details>
 
 <details><summary>Solution</summary>
 
-`jobs -p` prints the PID of every background job in this terminal, so this stops them all at once:
-
 ```plain
-kill $(jobs -p)
+cd ~
+PORT=7070 python3 app.py &
 ```{{exec}}
 
 </details>

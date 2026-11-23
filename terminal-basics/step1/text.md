@@ -1,25 +1,27 @@
-Serve the current folder on port `8080`, **in the background**, so you can keep typing commands.
+Make a folder called `ship` in your home folder. Go into it, and write `Going Merry` into a file called `name.txt`.
 
-Then be the client and ask it for a page:
+Then check where you are, and what the file says:
 
-`curl localhost:8080`{{exec}}
+`pwd`{{exec}}
 
-You should see the folder listing as HTML. The server logs each request into your terminal; if the prompt looks broken, press Enter.
+`cat name.txt`{{exec}}
 
-Press **Check** when the server answers.
+`pwd` should print `/root/ship`, and `cat` should print `Going Merry`. Press **Check** when they do.
 
 <br>
 
 <details><summary>Tip</summary>
 
-`&` at the end of a command runs it in the background. Python has a small web server built in: `python3 -m http.server <port>`.
+`mkdir` makes a folder, and `cd` goes into it. `echo "some text" > file` writes text into a file.
 
 </details>
 
 <details><summary>Solution</summary>
 
 ```plain
-python3 -m http.server 8080 &
+mkdir ~/ship
+cd ~/ship
+echo "Going Merry" > name.txt
 ```{{exec}}
 
 </details>

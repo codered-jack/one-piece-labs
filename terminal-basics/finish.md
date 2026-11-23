@@ -2,9 +2,10 @@
 
 You just:
 
+- made a **folder** and a file, and moved between folders
 - ran servers as background **processes**, and found one by its PID
 - used `ss -ltnp` to see which **ports** were taken
-- saw a **localhost** server refuse outside connections, and opened it up with `0.0.0.0`
+- saw a **localhost** server refuse calls to the network address, and opened it up with `0.0.0.0`
 - changed an app's port with an **environment variable**, without touching its code
 
-Every one of these comes back in the course. Next up is the ***What a container really is*** lesson, where you'll put a process in a box.
+Every one of these comes back in the course. Next is the ***What a container really is*** lesson, where you'll put a process in a box.

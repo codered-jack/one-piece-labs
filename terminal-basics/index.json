@@ -1,35 +1,40 @@
 {
   "title": "Your terminal in 20 minutes",
-  "description": "Processes, ports, localhost, and environment variables.",
+  "description": "Folders, processes, ports, localhost, and environment variables.",
   "details": {
     "intro": {
       "text": "intro.md"
     },
     "steps": [
       {
-        "title": "Start a web server",
+        "title": "Make a folder and a file",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Find its process ID",
+        "title": "Start a web server",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "From localhost to everyone",
+        "title": "Find its process ID",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
       },
       {
-        "title": "Configure an app with an environment variable",
+        "title": "From localhost to everyone",
         "text": "step4/text.md",
         "verify": "step4/verify.sh"
       },
       {
-        "title": "Clean up",
+        "title": "Set an app's port",
         "text": "step5/text.md",
         "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Clean up",
+        "text": "step6/text.md",
+        "verify": "step6/verify.sh"
       }
     ],
     "finish": {
