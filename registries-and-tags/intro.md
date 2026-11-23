@@ -7,6 +7,6 @@ This is the lab for the ***Share it: registries and tags*** lesson. This machine
 
 You won't need an account anywhere: the registry runs on this machine.
 
-Each step ends with a **Check** button that asks your registry whether the task is done. Stuck? Every step has a **Tip**, and a **Solution** if you need it.
+Each step ends with a **Check** button. It asks your registry whether the task is done. Stuck? Every step has a **Tip**, and a **Solution** if you need it.
 
 Press **Start** when you're ready.

@@ -7,6 +7,6 @@ This is the lab for the ***Build your own image*** lesson. This machine has Dock
 
 You'll write the Dockerfile in a terminal editor. `nano Dockerfile` opens one: type or paste, then press `Ctrl+O` and `Enter` to save, and `Ctrl+X` to quit.
 
-Each step ends with a **Check** button that runs your image and tells you whether the task is done. Stuck? Every step has a **Tip**, and a **Solution** if you need it.
+Each step ends with a **Check** button. It runs your image, and tells you whether the task is done. Stuck? Every step has a **Tip**, and a **Solution** if you need it.
 
 Press **Start** when you're ready.
