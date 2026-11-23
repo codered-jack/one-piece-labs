@@ -1,5 +1,5 @@
 {
-  "title": "Final project, part 2: make it production-ready",
+  "title": "Final project, The Conclusion: make it production-ready",
   "description": "Give the Bounty Board probes, requests and limits, an autoscaler and disruption budgets, then ship an update while visitors keep calling.",
   "details": {
     "intro": {

@@ -8,4 +8,4 @@ You just:
 - knocked from your browser
 - found a broken route through its `ResolvedRefs` condition, and fixed it
 
-Next up is the ***Final project, part 1: deploy the Bounty Board*** lesson: settings, a safe password, a database that keeps its data, and this front door, all in one app.
+Next up is the ***Final project, The Beginning: deploy the Bounty Board*** lesson: settings, a safe password, a database that keeps its data, and this front door, all in one app.

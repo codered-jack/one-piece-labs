@@ -1,4 +1,4 @@
-This is the lab for the ***Final project, part 1: deploy the Bounty Board*** lesson. This machine is a one-node Kubernetes cluster, with `kubectl` and Docker set up. While you read this, it's getting ready:
+This is the lab for the ***Final project, The Beginning: deploy the Bounty Board*** lesson. This machine is a one-node Kubernetes cluster, with `kubectl` and Docker set up. While you read this, it's getting ready:
 
 - installing Gateway API's CRDs, and **NGINX Gateway Fabric**, the gateway controller
 - cloning the labs repository into `~/one-piece-labs`

@@ -18,7 +18,7 @@ Press **Check** when the app is back with its old logbook.
 
 It's `docker compose down`, then the same `up -d` as before. Plain `down`, with no `-v`: that would delete the logbook.
 
-Ran `down -v` by mistake? The old calls are gone for good, but you can carry on: wait a few seconds, then run `down` and `up -d` once more.
+Ran `down -v` by mistake? The old calls are gone for good, but you can carry on. Wait a few seconds, then run `down` and `up -d` once more.
 
 </details>
 

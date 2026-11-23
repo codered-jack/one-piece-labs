@@ -1,5 +1,5 @@
 {
-  "title": "Final project, part 1: deploy the Bounty Board",
+  "title": "Final project, The Beginning: deploy the Bounty Board",
   "description": "Deploy the Bounty Board with its password in a Secret, its settings in a ConfigMap, its database on a disk, and a Gateway in front.",
   "details": {
     "intro": {

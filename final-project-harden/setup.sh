@@ -1,8 +1,8 @@
 #!/bin/bash
-# Rebuilds the end of part 1: installs the Gateway API CRDs, NGINX Gateway
+# Rebuilds the end of The Beginning: installs the Gateway API CRDs, NGINX Gateway
 # Fabric and metrics-server (with --kubelet-insecure-tls, as kubeadm's kubelet
 # certificates don't list the node's IP), clones the labs repository, builds
-# and imports the three images, writes final/ as part 1 left it, creates the
+# and imports the three images, writes final/ as The Beginning left it, creates the
 # namespace and the Secret, applies final/, posts Nico Robin, and starts the
 # lookout pod. Touches /root/.setup-done when all of it has finished.
 until kubectl get nodes >/dev/null 2>&1; do sleep 1; done

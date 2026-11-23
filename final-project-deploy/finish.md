@@ -8,4 +8,4 @@ You just deployed the Bounty Board the production way:
 - the API's `DATABASE_URL`, built by Kubernetes from both
 - a **Gateway** in front, with one route and two rules
 
-Next up is the ***Final project, part 2: make it production-ready*** lesson: probes, limits, autoscaling, a disruption budget, and an update that nobody notices.
+Next up is the ***Final project, The Conclusion: make it production-ready*** lesson: probes, limits, autoscaling, a disruption budget, and an update that nobody notices.

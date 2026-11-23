@@ -1,8 +1,8 @@
-This is the lab for the ***Final project, part 2: make it production-ready*** lesson. This machine is a one-node Kubernetes cluster, with `kubectl` and Docker set up. While you read this, it's rebuilding the end of part 1:
+This is the lab for the ***Final project, The Conclusion: make it production-ready*** lesson. This machine is a one-node Kubernetes cluster, with `kubectl` and Docker set up. While you read this, it's rebuilding the end of The Beginning:
 
 - installing Gateway API's CRDs, **NGINX Gateway Fabric**, and **metrics-server**
 - cloning the labs repository into `~/one-piece-labs`, and building the Bounty Board's images
-- writing `final/` as part 1 left it, and starting the board in the `bounty-board` namespace, with Nico Robin on it
+- writing `final/` as The Beginning left it, and starting the board in the `bounty-board` namespace, with Nico Robin on it
 - starting `lookout`, a pod to call the board from inside the cluster
 
 It takes three or four minutes. Step 1 waits for it.
