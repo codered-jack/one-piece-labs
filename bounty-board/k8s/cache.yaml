@@ -1,0 +1,36 @@
+# cache: Redis. It keeps a copy of the bounty list in memory for 30 seconds,
+# so most reads skip the database.
+
+# The Deployment keeps one copy running.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cache
+  template:
+    metadata:
+      labels:
+        app: cache
+    spec:
+      containers:
+        - name: cache
+          # A ready-made image, nothing to build.
+          image: redis:8-alpine
+          ports:
+            - containerPort: 6379
+---
+# The Service gives the cache the name cache, on Redis's port 6379.
+apiVersion: v1
+kind: Service
+metadata:
+  name: cache
+spec:
+  selector:
+    app: cache
+  ports:
+    - port: 6379
+      targetPort: 6379

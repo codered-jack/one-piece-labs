@@ -1,0 +1,50 @@
+# db: Postgres, the database. It stores every bounty.
+# Apply it with the rest: kubectl apply -n bounty-board -f k8s/
+
+# The Deployment keeps one copy running. Only one: each copy of Postgres would
+# keep its own, separate data.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: db
+          # Postgres, with db/init.sql built in. See db/Dockerfile.
+          image: bounty-board-db:1.0
+          # The Postgres image creates this user, password and database the
+          # first time it starts. They match DATABASE_URL in api.yaml.
+          env:
+            - name: POSTGRES_USER
+              value: bounty
+            # A practice password, not a real secret: this database only ever
+            # holds made-up bounties.
+            - name: POSTGRES_PASSWORD
+              value: not-a-real-secret
+            - name: POSTGRES_DB
+              value: bounties
+          ports:
+            - containerPort: 5432
+          # No volume yet. The data lives inside the container, so it's lost
+          # whenever this pod is replaced.
+---
+# The Service gives the database the name db, on Postgres's port 5432.
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  selector:
+    app: db
+  ports:
+    - port: 5432
+      targetPort: 5432
