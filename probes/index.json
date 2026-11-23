@@ -1,0 +1,43 @@
+{
+  "title": "Probes",
+  "description": "Tell Kubernetes when the Den Den Mushi is ready, take one copy off the line, and restart a stuck one with a liveness probe.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Wait until ready",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Take one off the line",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Watch for a hang",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Restart a stuck one",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Read the clue",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

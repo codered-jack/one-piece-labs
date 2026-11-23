@@ -1,0 +1,43 @@
+{
+  "title": "Resources and autoscaling",
+  "description": "Give the Den Den Mushi its share of CPU and memory, see what happens when a pod asks for too much or uses too much, and let an autoscaler pick the number of copies.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Give each copy its share",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Too big to fit",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Out of memory",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Hire an autoscaler",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "All hands",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

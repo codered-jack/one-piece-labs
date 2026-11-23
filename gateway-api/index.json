@@ -1,0 +1,43 @@
+{
+  "title": "Gateway API: one front door",
+  "description": "Open a Gateway, route / to the Den Den Mushi and /wanted to a wanted poster, and fix a route that points at the wrong Service.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Open the front door",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Route the calls",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "A second path",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Knock from outside",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Fix the broken route",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}
