@@ -1,0 +1,41 @@
+services:
+  web:
+    build: ./web
+    ports:
+      - "9000:80"
+    depends_on:
+      - api
+
+  api:
+    build: ./api
+    environment:
+      # A practice password, not a real secret: this database only ever holds
+      # made-up bounties.
+      DATABASE_URL: "postgresql://bounty:not-a-real-secret@db:5432/bounties"
+      REDIS_HOST: cache
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_started
+
+  cache:
+    image: redis:8-alpine
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: bounty
+      POSTGRES_PASSWORD: not-a-real-secret
+      POSTGRES_DB: bounties
+    volumes:
+      - bounty-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bounty -d bounties"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  bounty-data:

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Bounty Board</title>
+  <style>
+    body { font-family: Georgia, serif; background: #f4e9d0; color: #3b2a1a; margin: 0; padding: 2rem; }
+    h1 { text-align: center; letter-spacing: 0.1em; }
+    #source { text-align: center; font-style: italic; }
+    #board { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 1rem; max-width: 60rem; margin: 2rem auto; }
+    .poster { background: #fffaf0; border: 3px solid #3b2a1a; padding: 1rem; text-align: center; }
+    .poster h2 { margin: 0 0 0.5rem; font-size: 1.5rem; letter-spacing: 0.2em; }
+    .poster .bounty { font-weight: bold; }
+    form { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+    #error { color: #a00; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>THE BOUNTY BOARD</h1>
+  <p id="source"></p>
+  <form id="add">
+    <input name="name" placeholder="Pirate's name" maxlength="40" required>
+    <input name="bounty" type="number" min="0" max="99999999999" step="1" placeholder="Bounty in berries" required>
+    <button type="submit">Post a bounty</button>
+  </form>
+  <p id="error"></p>
+  <div id="board"></div>
+
+  <script>
+    const board = document.getElementById('board')
+    const source = document.getElementById('source')
+    const error = document.getElementById('error')
+
+    function poster(item) {
+      const card = document.createElement('div')
+      card.className = 'poster'
+      const title = document.createElement('h2')
+      title.textContent = 'WANTED'
+      const name = document.createElement('p')
+      name.textContent = item.name
+      const amount = document.createElement('p')
+      amount.className = 'bounty'
+      amount.textContent = item.bounty.toLocaleString('en-US') + ' berries'
+      card.append(title, name, amount)
+      return card
+    }
+
+    async function load() {
+      const response = await fetch('/api/bounties')
+      const body = await response.json()
+      if (!response.ok) {
+        error.textContent = body.error
+        return
+      }
+      source.textContent = 'Served from the ' + body.source
+      board.replaceChildren(...body.bounties.map(poster))
+    }
+
+    document.getElementById('add').addEventListener('submit', async (event) => {
+      event.preventDefault()
+      const form = new FormData(event.target)
+      const response = await fetch('/api/bounties', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: form.get('name'), bounty: Number(form.get('bounty')) }),
+      })
+      const body = await response.json()
+      error.textContent = response.ok ? '' : body.error
+      if (response.ok) {
+        event.target.reset()
+        await load()
+      }
+    })
+
+    load()
+  </script>
+</body>
+</html>
