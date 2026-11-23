@@ -1,4 +1,4 @@
-The Bounty Board's code is in the public repository the labs use. Clone it into your home folder, then look at what's there:
+The Bounty Board's code is in the public repository the labs use. Copy it into your home folder with `git clone`, then look at what's there:
 
 `ls ~/one-piece-labs/bounty-board`{{exec}}
 

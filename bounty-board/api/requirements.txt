@@ -1,4 +1,10 @@
+# The Python libraries the app needs, each pinned to one version, so every
+# build installs the same thing.
+# Flask: answers web calls, and turns Python data into JSON.
 flask==3.1.3
+# gunicorn: the server that runs the Flask app.
 gunicorn==27.0.1
+# psycopg: talks to Postgres, the database.
 psycopg[binary]==3.3.9
+# redis: talks to Redis, the cache.
 redis==8.2.0

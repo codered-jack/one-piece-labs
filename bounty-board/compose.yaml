@@ -1,41 +1,76 @@
+# The Bounty Board: four services, each run as one container.
+# Start it with `docker compose up -d --build`, from this folder.
 services:
+
+  # web: the web server. It sends your browser the page, and passes every
+  # call to an address starting with /api/ on to the api service.
   web:
+    # Build the image from the Dockerfile in the web/ folder.
     build: ./web
+    # Port 9000 on your machine leads to port 80, where nginx listens.
     ports:
       - "9000:80"
+    # Start web after api.
     depends_on:
       - api
 
+  # api: a small Python app. It lists bounties and adds new ones, and answers
+  # in JSON.
   api:
+    # Build the image from the Dockerfile in the api/ folder.
     build: ./api
+    # Settings the app reads when it starts.
     environment:
+      # Where the database is: user bounty, its password, the service db on
+      # Postgres's port 5432, and the database called bounties.
       # A practice password, not a real secret: this database only ever holds
       # made-up bounties.
       DATABASE_URL: "postgresql://bounty:not-a-real-secret@db:5432/bounties"
+      # Where the cache is: the service called cache.
       REDIS_HOST: cache
     depends_on:
+      # Wait until db is healthy, meaning ready, as its healthcheck reports.
       db:
         condition: service_healthy
+      # Wait only until cache has started.
       cache:
         condition: service_started
 
+  # cache: Redis. It keeps a copy of the bounty list in memory for 30
+  # seconds, so most reads skip the database.
   cache:
+    # A ready-made image, nothing to build.
     image: redis:8-alpine
 
+  # db: Postgres, the database. It stores every bounty.
   db:
     image: postgres:17-alpine
+    # The Postgres image creates this user, password and database the first
+    # time it starts. They match DATABASE_URL above.
     environment:
       POSTGRES_USER: bounty
       POSTGRES_PASSWORD: not-a-real-secret
       POSTGRES_DB: bounties
     volumes:
+      # Keep the data in the volume bounty-data. /var/lib/postgresql/data is
+      # where Postgres keeps it, so the data outlives the container.
       - bounty-data:/var/lib/postgresql/data
+      # Lend db/init.sql, read-only. Postgres runs it once, when it sets up a
+      # brand-new database: it creates the table and the first five bounties.
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    # How Docker checks that db is ready, not just started.
     healthcheck:
+      # pg_isready, a tool in the Postgres image, says yes once the database
+      # accepts connections.
       test: ["CMD-SHELL", "pg_isready -U bounty -d bounties"]
+      # Check every 2 seconds.
       interval: 2s
+      # Give each check up to 3 seconds.
       timeout: 3s
+      # After 15 failures in a row, mark db unhealthy.
       retries: 15
 
+# The named volumes. Compose creates them, named after the folder:
+# bounty-board_bounty-data.
 volumes:
   bounty-data:

@@ -8,13 +8,20 @@ from werkzeug.exceptions import HTTPException
 
 import bounties
 
+# Limits on what a new bounty may be. The database checks the same limits, in
+# db/init.sql.
 MAX_NAME_LENGTH = 40
 MAX_BOUNTY = 99_999_999_999
+# A bounty is a few dozen bytes; anything over 1 KB is refused with 413.
 MAX_REQUEST_BYTES = 1024
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = MAX_REQUEST_BYTES
 
+
+# --- Checking a new bounty -------------------------------------------------
+# Every POST is checked here first. A bad one gets status 400 and a message
+# saying what's wrong, and never reaches the database.
 
 @dataclass(frozen=True)
 class NewBounty:
@@ -39,12 +46,17 @@ def parse_new_bounty(payload: object) -> NewBounty:
     return NewBounty(name=name.strip(), bounty=amount)
 
 
+# --- The API's addresses ---------------------------------------------------
+# nginx passes every call to /api/... on to these.
+
+# GET /api/bounties: every bounty, and where the list came from.
 @app.get("/api/bounties")
 def get_bounties():
     items, source = bounties.list_bounties()
     return jsonify(source=source, bounties=items)
 
 
+# POST /api/bounties: add a bounty. 201 when it's stored, 400 when it's not valid.
 @app.post("/api/bounties")
 def post_bounty():
     payload = request.get_json(silent=True)
@@ -55,6 +67,7 @@ def post_bounty():
     return jsonify(bounties.add_bounty(new.name, new.bounty)), 201
 
 
+# GET /api/health: is each part up? 200 when both are, 503 when either isn't.
 @app.get("/api/health")
 def health():
     status = {
@@ -65,11 +78,17 @@ def health():
     return jsonify(status), 200 if healthy else 503
 
 
+# --- When things go wrong --------------------------------------------------
+# Errors are answered in JSON too, so the page can show the message.
+
+# The database can't be reached: 503, with a message the page shows.
 @app.errorhandler(psycopg.OperationalError)
 def database_unavailable(_error: psycopg.OperationalError):
     return jsonify(error="the database is unavailable"), 503
 
 
+# Any other web error, such as 404 for an unknown address or 413 for a body
+# that's too big.
 @app.errorhandler(HTTPException)
 def http_error(error: HTTPException):
     return jsonify(error=error.description), error.code

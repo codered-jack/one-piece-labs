@@ -9,8 +9,10 @@ from typing import Literal, TypedDict
 import psycopg
 import redis
 
+# The cached list is stored in Redis under this name, for 30 seconds.
 CACHE_KEY = "bounties"
 CACHE_SECONDS = 30
+# Give up on the database or the cache after 3 seconds, rather than hang.
 CONNECT_TIMEOUT_SECONDS = 3
 
 # Read at import, so a container started without its settings fails at boot
@@ -20,6 +22,8 @@ REDIS_HOST = os.environ["REDIS_HOST"]
 
 log = logging.getLogger(__name__)
 
+# The connection to Redis. REDIS_HOST is the service name, cache; 6379 is
+# Redis's port.
 _cache = redis.Redis(
     host=REDIS_HOST,
     port=6379,
@@ -37,6 +41,10 @@ class Bounty(TypedDict):
 
 Source = Literal["cache", "database"]
 
+
+# --- Reading and adding bounties -------------------------------------------
+# A read asks the cache first, and the database only when the cache has no
+# copy. Adding a bounty drops the copy, so the next read is fresh.
 
 def list_bounties() -> tuple[list[Bounty], Source]:
     """All bounties, highest first, and where they came from.
@@ -66,6 +74,8 @@ def add_bounty(name: str, bounty: int) -> Bounty:
     return {"id": row[0], "name": row[1], "bounty": row[2]}
 
 
+# --- Health checks, for GET /api/health ------------------------------------
+
 def database_is_up() -> bool:
     try:
         with _connect() as conn:
@@ -82,6 +92,8 @@ def cache_is_up() -> bool:
         return False
 
 
+# --- Talking to the database -----------------------------------------------
+
 def _connect() -> psycopg.Connection:
     return psycopg.connect(DATABASE_URL, connect_timeout=CONNECT_TIMEOUT_SECONDS)
 
@@ -92,6 +104,7 @@ def _read_database() -> list[Bounty]:
     return [{"id": r[0], "name": r[1], "bounty": r[2]} for r in rows]
 
 
+# --- Talking to the cache --------------------------------------------------
 # The cache only saves work, so every cache failure below is logged and
 # skipped (fail-open): with Redis down, reads go to the database. The cost is
 # in _forget_cache: if Redis is unreachable then, readers can see a list that

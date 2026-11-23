@@ -1,12 +1,12 @@
-Take one part away: **stop** only the `cache` service. Then read the board:
+Take one part away: **stop** only the `cache` service. Then read the board, from the page or the terminal:
 
-`curl -s localhost:9000/api/bounties | grep -o '"source":"[a-z]*"'`{{exec}}
+`curl -s localhost:9000/api/bounties`{{exec}}
 
-It still works, now straight from the `database`. Ask the health page:
+It still works, and `source` at the end now always says `database`. Ask the health page, with `-i` to see the status code:
 
-`curl -s localhost:9000/api/health`{{exec}}
+`curl -si localhost:9000/api/health`{{exec}}
 
-The health page reports the cache `down`. Losing the cache made the board slower, but didn't stop it.
+`503 SERVICE UNAVAILABLE`, with the cache `down`. Losing the cache made the board slower, but didn't stop it.
 
 Press **Check** when the cache is stopped and the board still answers.
 
@@ -14,13 +14,14 @@ Press **Check** when the cache is stopped and the board still answers.
 
 <details><summary>Tip</summary>
 
-`docker compose stop` takes the name of a service from `compose.yaml`.
+`docker compose stop` takes the name of a service from `compose.yaml`. Run it in `~/one-piece-labs/bounty-board`.
 
 </details>
 
 <details><summary>Solution</summary>
 
 ```plain
+cd ~/one-piece-labs/bounty-board
 docker compose stop cache
 ```{{exec}}
 

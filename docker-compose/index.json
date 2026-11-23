@@ -1,0 +1,42 @@
+{
+  "title": "Docker Compose: one file, one command",
+  "description": "Write the Den Den Mushi down in a compose.yaml, add a lookout that calls it, and run, stop and clear both with Compose.",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Write it down",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Ring the Den Den Mushi",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Post a lookout",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Down, not out",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Clear the harbor",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
