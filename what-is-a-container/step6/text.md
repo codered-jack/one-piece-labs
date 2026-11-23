@@ -8,7 +8,7 @@ You'll still see the containers that ran `echo`, `cat` and `uname`. They stopped
 
 <details><summary>Tip</summary>
 
-`docker rm` removes a container, and `-f` stops it first if it's still running.
+`docker rm` removes a container. `-f` stops it first, if it's still running.
 
 </details>
 
