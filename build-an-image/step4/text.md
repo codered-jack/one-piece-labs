@@ -10,7 +10,7 @@ There's a `.env` file. In a real project it would hold passwords; this one is fa
 
 `docker run --entrypoint ls wanted:v4 -a /app`{{exec}}
 
-Press **Check** when `/app` has `wanted.py` but no `.env`. Keep the `.env` file itself: the point is to leave it out of the image, not to delete it.
+Press **Check** when `/app` has `wanted.py` but no `.env`. Don't delete the `.env` file itself. The point is to leave it out of the image.
 
 <br>
 

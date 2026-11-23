@@ -1,6 +1,6 @@
 `wanted.py` reads the bounty from the `BOUNTY` environment variable, and uses `1,000` when it isn't set.
 
-Build `wanted:v3`, which works like `v2` but has a **default bounty of `30,000,000`**, without editing `wanted.py`:
+Build `wanted:v3`. It works like `v2`, but has a **default bounty of `30,000,000`**. Don't edit `wanted.py`:
 
 `docker run wanted:v3`{{exec}}
 

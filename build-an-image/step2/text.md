@@ -2,7 +2,7 @@ Try asking `v1` for Zoro's poster:
 
 `docker run wanted:v1 Zoro`{{exec}}
 
-It fails: whatever you type after the image name replaces the whole `CMD`, so Docker tried to run a program called `Zoro`.
+It fails. Whatever you type after the image name replaces the whole `CMD`. So Docker looked for a program called `Zoro`.
 
 Change the Dockerfile and build `wanted:v2`, so that:
 
@@ -15,7 +15,7 @@ Press **Check** when both work.
 
 <details><summary>Tip</summary>
 
-Split the command in two. `ENTRYPOINT` is the part that always runs: `["python3", "wanted.py"]`. `CMD` becomes just the default argument, `["Luffy"]`, and it's the part a name after the image replaces.
+Split the command in two. `ENTRYPOINT` is the part that always runs: `["python3", "wanted.py"]`. `CMD` becomes just the default argument, `["Luffy"]`. A name after the image replaces only that part.
 
 </details>
 
