@@ -22,7 +22,13 @@ Press **Check** when it prints your file back with no error.
 
 <details><summary>Tip</summary>
 
-Under `services:` goes `den-den:`, and under that, three settings: `image:`, `command:` (everything after the image name), and `ports:`, a list with one item, `"9000:8000"`. Indent with spaces, never tabs.
+Under `services:` goes `den-den:`. Under that go three settings:
+
+- `image:`
+- `command:`, everything after the image name
+- `ports:`, a list with one item, `"9000:8000"`
+
+Indent with spaces, never tabs.
 
 </details>
 

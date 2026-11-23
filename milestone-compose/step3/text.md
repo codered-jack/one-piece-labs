@@ -20,7 +20,11 @@ Type the name and the bounty in the form at the top of the page, and press **Pos
 
 <details><summary>Solution</summary>
 
-The page sends the API this JSON with `POST`. You can send it from the terminal too: `-X POST` sends data instead of only asking, `-H` says the data is JSON, and `-d` is the data itself:
+The page sends the API this JSON with `POST`. You can send it from the terminal too:
+
+- `-X POST` sends data, instead of only asking for it.
+- `-H` says the data is JSON.
+- `-d` is the data itself.
 
 ```plain
 curl -s -X POST -H 'Content-Type: application/json' -d '{"name": "Nico Robin", "bounty": 930000000}' localhost:9000/api/bounties
