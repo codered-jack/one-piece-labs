@@ -1,3 +1,7 @@
+First, wait for the setup to finish. It installs Compose, and prints `ready` when it's done:
+
+`until [ -f ~/.setup-done ]; do sleep 2; done; echo ready`{{exec}}
+
 Check that Compose is here:
 
 `docker compose version`{{exec}}

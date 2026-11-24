@@ -3,7 +3,8 @@
   "description": "Run the four-part Bounty Board with Docker Compose: start it, add data, restart it, take a part away, and clear it.",
   "details": {
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "background": "setup.sh"
     },
     "steps": [
       {

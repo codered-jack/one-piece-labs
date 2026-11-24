@@ -1,3 +1,7 @@
+First, wait for the setup to finish. It installs Compose, and prints `ready` when it's done:
+
+`until [ -f ~/.setup-done ]; do sleep 2; done; echo ready`{{exec}}
+
 The Bounty Board's code is in the public repository the labs use. Copy it into your home folder with `git clone`, then look at what's there:
 
 `ls ~/one-piece-labs/bounty-board`{{exec}}

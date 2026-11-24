@@ -1,4 +1,4 @@
-This is the lab for the ***Milestone: Bounty Board with Compose*** lesson. This machine has Docker installed. You'll run the Bounty Board, a four-part app, with Docker Compose:
+This is the lab for the ***Milestone: Bounty Board with Compose*** lesson. This machine has Docker installed. While you read this, it's installing the Compose plugin. You'll run the Bounty Board, a four-part app, with Docker Compose:
 
 - get the code
 - start all four parts with **one command**

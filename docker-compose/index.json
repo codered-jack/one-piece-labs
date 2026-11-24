@@ -3,7 +3,8 @@
   "description": "Write the Den Den Mushi down in a compose.yaml, add a lookout that calls it, and run, stop and clear both with Compose.",
   "details": {
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "background": "setup.sh"
     },
     "steps": [
       {

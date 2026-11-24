@@ -1,4 +1,4 @@
-This is the lab for the ***Docker Compose: one file, one command*** lesson. This machine has Docker installed. You'll run containers from a `compose.yaml` instead of long `docker run` commands:
+This is the lab for the ***Docker Compose: one file, one command*** lesson. This machine has Docker installed. While you read this, it's installing the Compose plugin. You'll run containers from a `compose.yaml` instead of long `docker run` commands:
 
 - write the **Den Den Mushi** down in a `compose.yaml`
 - start it with **one command**
